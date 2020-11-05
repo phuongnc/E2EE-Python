@@ -1,0 +1,13 @@
+beautifulsoup4==4.9.2
+certifi==2020.6.20
+cffi==1.14.3
+cryptography==3.1.1
+google==3.0.0
+grpcio==1.32.0
+grpcio-tools==1.32.0
+libsignal==0.0.4
+protobuf==3.13.0
+pycparser==2.20
+python-axolotl-curve25519==0.4.1.post2
+six==1.15.0
+soupsieve==2.0.1

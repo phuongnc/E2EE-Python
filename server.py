@@ -28,7 +28,6 @@ class ClientGroupKey:
 
 class SignalKeyDistribution(signalc_pb2_grpc.SignalKeyDistributionServicer):
     def __init__(self):
-        #self.q = Queue()
         self.queues = {}
 
     def RegisterBundleKey(self, request, context):

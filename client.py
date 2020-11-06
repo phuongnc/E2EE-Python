@@ -22,7 +22,6 @@ class ClientTest:
         self.device_id = device_id
         self.stub = self.grpc_stub(host, port)
         self.my_store = MyStore()
-        self.listen()
 
     def grpc_stub(self, host, port):
         channel = grpc.insecure_channel(host + ':' + str(port))
@@ -65,6 +64,7 @@ class ClientTest:
     def subscribe(self):
         request = signalc_pb2.SubscribeAndListenRequest(clientId=self.client_id)
         response = self.stub.Subscribe(request)
+        self.listen()
 
     def publish(self, message, receiver_id):
         # encrypt message first

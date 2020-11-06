@@ -3,7 +3,7 @@ import logging
 
 def run():
         # init bob client
-        one = client_group.ClientGroupTest('one', 1, '172.16.0.216', 50052)
+        one = client_group.ClientGroupTest('one', 1, 'localhost', 50052)
         one.subscribe()
         one.register_group_keys("test-group")
         message = input("Start message to group: \n")

@@ -9,9 +9,6 @@ from libsignal.groups.groupsessionbuilder import GroupSessionBuilder
 from libsignal.groups.groupcipher import GroupCipher
 from libsignal.protocol.senderkeydistributionmessage import SenderKeyDistributionMessage
 
-#SENDER_ADDRESS = AxolotlAddress("+14150001111", 1)
-#GROUP_SENDER = SenderKeyName("test_group", SENDER_ADDRESS);
-
 class ClientGroupTest:
     def __init__(self, client_id, device_id, host, port):
         self.client_id = client_id
@@ -19,7 +16,6 @@ class ClientGroupTest:
         self.stub = self.grpc_stub(host, port)
         self.my_sender_store = MySenderKeyStore()
         self.my_sender_address = AxolotlAddress(client_id, device_id)
-        self.listen()
 
     def grpc_stub(self, host, port):
         channel = grpc.insecure_channel(host + ':' + str(port))
@@ -51,6 +47,7 @@ class ClientGroupTest:
     def subscribe(self):
         request = signalc_group_pb2.GroupSubscribeAndListenRequest(clientId=self.client_id)
         response = self.stub.Subscribe(request)
+        self.listen()
 
     def publish(self, message, group_id):
         # encrypt message first

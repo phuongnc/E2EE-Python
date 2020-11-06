@@ -16,7 +16,6 @@ class ClientGroupKey:
 
 class GroupKeyDistribution(signalc_group_pb2_grpc.GroupSenderKeyDistributionServicer):
     def __init__(self):
-        self.q = Queue()
         self.queues = {}
 
     def RegisterSenderKeyGroup(self, request, context):
@@ -87,7 +86,6 @@ class GroupKeyDistribution(signalc_group_pb2_grpc.GroupSenderKeyDistributionServ
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     signalc_group_pb2_grpc.add_GroupSenderKeyDistributionServicer_to_server(GroupKeyDistribution(), server)
-    # signalc_pb2_grpc.add_SignalKeyDistributionServicer_to_server(SignalKeyDistribution(), server)
     server.add_insecure_port('0.0.0.0:50052')
     server.start()
     print('Server has started at port: 50052')

@@ -3,7 +3,7 @@ import logging
 
 def run():
         # init two client
-        three = client_group.ClientGroupTest('three', 3, '172.16.0.216', 50052)
+        three = client_group.ClientGroupTest('three', 3, 'localhost', 50052)
         three.subscribe()
         three.register_group_keys("test-group")
         message = input("Start message to group: \n")
